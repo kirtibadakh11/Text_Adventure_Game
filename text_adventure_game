@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class TextAdventureGame {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Text Adventure Game!");
+        System.out.println("You find yourself in a mysterious forest...");
+
+        // Initial decision point
+        System.out.println("1. Follow the path");
+        System.out.println("2. Enter the dark cave");
+        int decision = getUserChoice(scanner);
+
+        if (decision == 1) {
+            System.out.println("You follow the path and discover a hidden treasure!");
+        } else if (decision == 2) {
+            System.out.println("As you enter the dark cave, you encounter a dragon!");
+            System.out.println("What will you do?");
+            System.out.println("1. Fight the dragon");
+            System.out.println("2. Run away");
+            decision = getUserChoice(scanner);
+
+            if (decision == 1) {
+                System.out.println("Unfortunately, the dragon is too powerful. You become its lunch.");
+            } else if (decision == 2) {
+                System.out.println("You manage to escape from the cave. It was a close call!");
+            } else {
+                System.out.println("Invalid choice. The dragon attacks!");
+            }
+        } else {
+            System.out.println("Invalid choice. You are lost in the forest.");
+        }
+
+        System.out.println("Thanks for playing the Text Adventure Game!");
+    }
+
+    private static int getUserChoice(Scanner scanner) {
+        int choice = -1;
+        while (choice <= 0) {
+            try {
+                System.out.print("Enter your choice: ");
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice <= 0) {
+                    System.out.println("Please enter a valid positive number.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+        }
+        return choice;
+    }
+}
